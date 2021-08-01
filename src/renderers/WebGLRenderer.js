@@ -809,6 +809,8 @@ function WebGLRenderer( parameters = {} ) {
 
 		if ( object.isMesh ) {
 
+
+
 			if ( material.wireframe === true ) {
 
 				state.setLineWidth( material.wireframeLinewidth * getTargetPixelRatio() );
@@ -1801,6 +1803,11 @@ function WebGLRenderer( parameters = {} ) {
 		p_uniforms.setValue( _gl, 'modelViewMatrix', object.modelViewMatrix );
 		p_uniforms.setValue( _gl, 'normalMatrix', object.normalMatrix );
 		p_uniforms.setValue( _gl, 'modelMatrix', object.matrixWorld );
+
+		if ("uniforms" in object) {
+			for (const [key, value] of object.uniforms)
+			p_uniforms.setValue( _gl, key, value );
+		}
 
 		return program;
 

@@ -41,6 +41,8 @@ class Object3D extends EventDispatcher {
 		this.parent = null;
 		this.children = [];
 
+		this.uniforms = new Map();
+
 		this.up = Object3D.DefaultUp.clone();
 
 		const position = new Vector3();
